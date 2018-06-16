@@ -7,6 +7,7 @@ namespace CSharpLanguageDemo
     {
         public static void BadVariableCapture()
         {
+            Console.WriteLine("\n === Bad Variable Capture === \n");
             var actions = new Action[10];              // One instance for the loop's variable
             for (int x = 0; x < actions.Length; x++)
             {
@@ -19,10 +20,13 @@ namespace CSharpLanguageDemo
             }
             foreach (var act in actions)
                 act();                                 // Executes actions code
+
+            Console.WriteLine("\n === ****** === \n");
         }
 
         public static void BadVariableCaptureToExecutionError()
         {
+            Console.WriteLine("\n === Bad Variable Capture To Execution Error === \n");
             var actions     = new List<Action>();
             string[] urls =                                    // A simple array and a list of actions
             {
@@ -37,6 +41,8 @@ namespace CSharpLanguageDemo
 
             foreach (var act in actions)
                 act();
+
+            Console.WriteLine("\n === ****** === \n");
         }
     }
 }

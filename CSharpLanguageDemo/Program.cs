@@ -1,12 +1,11 @@
-﻿using System;
-
-namespace CSharpLanguageDemo
+﻿namespace CSharpLanguageDemo
 {
     class Program
     {
         static void Main(string[] args)
         {
-            ClosureExampleClass.BadVariableCapture();
+            //ClosureExampleClass.BadVariableCapture();
+            ClosureExampleClass.BadVariableCaptureToExecutionError();
         }
     }
 }

@@ -67,4 +67,16 @@ for (int i = 0; i < num.Length; i++)
 
 Interfaces are syntactically similar to abstract classes. That is, an interface provides no implementation, once it is defined what must be done, any number of classes can implement it, just like one class can implement any number of interfaces, which allows C# to offer a solution for multiple inheritance without explicitly allowing it.
 
+> Methods of an interface are implicitly public, and no explicit access specifier is allowed. No member can be declared static.
 
+Every class that implements an interface can be referenced, that is whenever stands a declaration it can also be made the same way as inheritance. Interfaces can have properties and indexers also, but still no explicit access specifier is allowed because its permissions can be declared with a *get* or read permission and *set* write permission.
+
+They also can inherit between them, so when a class is declared to implement an interface it must also implement its parent interface and so on. When is needed a member of an class can be declared *new* so it won't cause any conflict with the interface member's name or desambiguation. Another way for desambiguation is also an explicit interface member implementation, but this one has another hiding use, declaring a member with an explicit syntax means that it can't be accessed by an object instance of the class but as a interface reference.
+
+Interfaces has many uses, to be able to compare any given pair objects there is IComparable, to create collections, read from them or write from them, there is ICollection, but there is one which has much bigger impact on the language starting with taking advantage of the foreach loop syntax, that is IEnumerable and IEnumerator, together they are called iterators and are fully prepared to be lazy which enables some optimization against the overhead of needing an entire collection loaded into memory.
+
+> The term **yield** is a contextual keyword. Outside of an iterator it can be used as any other identifier.
+
+The importance of these interfaces takes a major role whenever working with collections of data, so for that C# introduces a sub-language within itself based on these interfaces that is LINQ.
+
+## LINQ

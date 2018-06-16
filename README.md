@@ -2,6 +2,7 @@
 
 This project contains some basic definitions of C# features as a language such as:
   * Closure
+  * Interfaces
 
 
 ## Closure
@@ -61,4 +62,9 @@ for (int i = 0; i < num.Length; i++)
     actions.Add(() => Console.WriteLine(num[j]));   // Capture that new instance instead
 }   // No runtime errors for this one
 ~~~
+
+## Interfaces
+
+Interfaces are syntactically similar to abstract classes. That is, an interface provides no implementation, once it is defined what must be done, any number of classes can implement it, just like one class can implement any number of interfaces, which allows C# to offer a solution for multiple inheritance without explicitly allowing it.
+
 

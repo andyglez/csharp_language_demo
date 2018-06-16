@@ -18,6 +18,8 @@ method and the environment it interacts with is the set of variables captured by
 
 > Captured Variables lives for at least as long as any delegate instance referring it.
 
+The C# compiler creates such extra classes automatically, allowing it to create a copy from the value currently in the stack frame of its scope into a whole new object and thus reusing it wherever the anonymous function is called into action.
+
 ~~~csharp
 public Action CapturedVariablesExtendedLife()
 {
@@ -50,7 +52,7 @@ foreach (var act in actions)
     act();           // This will result on runtime error (since it's calling Console.WriteLine(num[4]))
 ~~~
 
-As a solution, always works to create a variable inside the for loop so that foreach iteration a new instance of a local variable is captured.
+As a solution, a variable must be created inside the for loop so that foreach iteration a new and different instance of a local variable is captured.
 
 ~~~csharp
 for (int i = 0; i < num.Length; i++)

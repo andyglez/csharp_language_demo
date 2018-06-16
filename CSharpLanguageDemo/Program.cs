@@ -6,7 +6,7 @@ namespace CSharpLanguageDemo
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            ClosureExampleClass.BadVariableCapture();
         }
     }
 }

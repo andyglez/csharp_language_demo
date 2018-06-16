@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CSharpLanguageDemo
 {
@@ -20,6 +16,8 @@ namespace CSharpLanguageDemo
                     Console.WriteLine($"{x} {y} {z}"); // Capturing outer variables
                 };
             }
+            foreach (var act in actions)
+                act();                                 // Executes actions code
         }
     }
 }

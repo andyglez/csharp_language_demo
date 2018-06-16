@@ -5,6 +5,15 @@ namespace CSharpLanguageDemo
 {
     class ClosureExampleClass
     {
+        public static Action CapturedVariablesExtendedLife()
+        {
+            int counter = 0;
+            return () =>
+            {
+                counter++;
+                Console.WriteLine($"CapturedVariablesExtendedLife call no. {counter}");
+            };
+        }
         public static void BadVariableCapture()
         {
             Console.WriteLine("\n === Bad Variable Capture === \n");

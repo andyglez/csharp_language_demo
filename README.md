@@ -45,8 +45,8 @@ void Example1()
 var actions  = new List<Action>();
 string[] num = {1, 2, 3, 4};                        // A simple array and a list of actions
 
-for (int i = 0; i < num.Length; i++)               // As one instance is really the same
-    actions.Add(() => Console.WriteLine(num[i]));  //  foreach action in list, the 'i' last modified by the for loop
+for (int i = 0; i < num.Length; i++)               // As one instance is really the same foreach
+    actions.Add(() => Console.WriteLine(num[i]));  // action in list, the i modified by the for loop
 
 foreach (var act in actions)
     act();           // This will result on runtime error (since it's calling Console.WriteLine(num[4]))

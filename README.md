@@ -79,4 +79,69 @@ Interfaces has many uses, to be able to compare any given pair objects there is 
 
 The importance of these interfaces takes a major role whenever working with collections of data, so for that C# introduces a sub-language within itself based on these interfaces that is LINQ.
 
-## LINQ
+## LINQ and iterators
+
+It stands for Language Integrated Query, providing a SQL-like syntax to retrieve information from data sources, so at its core there is the query that will result in an iterable collection or IEnumerable, perfect for integrating C# with all relational database services or even XML and some others. 
+
+About its syntax:
+
+~~~csharp
+var query = from range_variable in data_source
+            where boolean_expression
+            orderby field_to_sort_by
+            select expression;
+~~~
+
+A query must always begin with a *from* keyword and end with either a *select* or *group* clause. Of course there are other keywords that begin clauses, such as:
+  * from
+  * group
+  * join
+  * let
+  * orderby
+  * select
+  * where
+
+A range variable is declared to iterate through the data source and its type is inferred from it, the *where* clause is a boolean expression or a condition for the query, the *orderby* clause defines which field or value from the range variable will the sorting parameter for the result query and finally *select* states what is to be returned by the query. Types of expressions are inferred from context for that reason the query variable should be declared using *var* keyword, so it would an IEnumerable like type for iteration standards in the language.
+
+So, a query is basically an IEnumerable which means that with this definition its body was declared and no a call to it, a call for it is defined whenever used in a foreach loop.
+
+> Enumerables are lazy which means that they consume only whats needed and no more.
+
+~~~csharp
+public static IEnumerable<int> GetPrimes()
+{
+    int i = 2;
+    while (true)
+    {
+        if (IsPrime(i))
+            yield return i;
+        i++;
+    }
+}
+~~~
+
+A collection of prime numbers can be created like this and can go to infinity, at least in appearence, because there isn't declared a final value. For that reason, using lazy iterators it is possible to do the next call and never get stuck within the *while(true)* loop.
+
+~~~csharp
+foreach (var item in GetPrimes().Where((prime) => prime.ToString().StartsWith("2")).Take(10))
+    Console.WriteLine(item);
+~~~ 
+
+It calls like this: "get 10 prime numbers where their first digit is 2", so lazy goes in action, to infinity in appereance but only the necessary.
+
+C# uses, by default, an impatient evaluation so a classic Haskell example defined to C# hoping for the same its completely useless since Haskell uses lazy evaluation.
+
+~~~csharp
+public static ulong Infinity() => 1 + Infinity();
+public static int Four(ulong x) => 4;
+~~~
+
+The main way to seize lazy evaluation in C# is through iterators, but they aren't the only ones evaluated this way.
+
+~~~csharp
+bool logical = true || Four(Infinity());
+bool bitwise = true |  Four(Infinity());
+~~~
+
+First, it's clear that the call to Four with Infinity results in a runtime error, and then logical operation recognizes that the left operand is true, so there's no need to evaluate the second. That is because logical operators uses lazy evaluation, instead of bitwise operator who needs to check both operands to compute the result and thus it is impatient.
+

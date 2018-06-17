@@ -16,6 +16,21 @@ namespace CSharpLanguageDemo
             Example2();
             Example3();
             Example4();
+            if (true || Helper.Four(Helper.Infinity()) == 10)
+            {
+                Console.WriteLine("Lazy");
+            }
+            /*try
+            {
+                if (true | Helper.Four(Helper.Infinity()) == 10)
+                {
+                    Console.WriteLine("Impatient");
+                }
+            }
+            catch(StackOverflowException e)
+            {
+                Console.WriteLine(e.Message);
+            }*/
         }
 
         static void Example1()

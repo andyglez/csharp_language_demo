@@ -15,7 +15,7 @@ namespace CSharpLanguageDemo
             Example1();
             Example2();
             Example3();
-            Helper.Four(Helper.Infinity());
+            Example4();
         }
 
         static void Example1()
@@ -62,6 +62,19 @@ namespace CSharpLanguageDemo
             {
                 Console.WriteLine(item);
             }
+
+            Console.WriteLine("\n === ******** === \n");
+        }
+
+        static void Example4()
+        {
+            Console.WriteLine("\n === LINQ syntax === \n");
+
+            var query = from prime in Helper.GetPrimes()
+                        where prime < 100
+                        select prime;
+
+            Console.WriteLine(query);
 
             Console.WriteLine("\n === ******** === \n");
         }

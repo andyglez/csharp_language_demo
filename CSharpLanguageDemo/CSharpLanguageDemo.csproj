@@ -43,6 +43,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClosureExampleClass.cs" />
+    <Compile Include="Hierarchy\Assistant.cs" />
+    <Compile Include="Hierarchy\ITeacher.cs" />
+    <Compile Include="Hierarchy\IWorker.cs" />
+    <Compile Include="Hierarchy\Person.cs" />
+    <Compile Include="Hierarchy\Student.cs" />
+    <Compile Include="Hierarchy\Teacher.cs" />
+    <Compile Include="Hierarchy\Worker.cs" />
     <Compile Include="MyLinq.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="Program.cs" />

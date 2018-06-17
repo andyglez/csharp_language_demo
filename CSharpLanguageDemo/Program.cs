@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using CSharpLanguageDemo.Hierarchy;
 
 namespace CSharpLanguageDemo
 {
@@ -16,21 +17,7 @@ namespace CSharpLanguageDemo
             Example2();
             Example3();
             Example4();
-            if (true || Helper.Four(Helper.Infinity()) == 10)
-            {
-                Console.WriteLine("Lazy");
-            }
-            /*try
-            {
-                if (true | Helper.Four(Helper.Infinity()) == 10)
-                {
-                    Console.WriteLine("Impatient");
-                }
-            }
-            catch(StackOverflowException e)
-            {
-                Console.WriteLine(e.Message);
-            }*/
+            Example5();
         }
 
         static void Example1()
@@ -45,17 +32,17 @@ namespace CSharpLanguageDemo
         static void Example2()
         {
             Console.WriteLine("\n === Examples LINQ MyGroupBy === \n");
-            var students = new List<Student>() {
-                new Student(20, "Andy", "C-312") ,
-                new Student(21, "Rafa", "C-312") ,
-                new Student(21, "Pedro", "C-311") ,
-                new Student(20, "Diana", "C-312") ,
-                new Student(20, "Daniela", "C-311") ,
-                new Student(21, "Fernando", "C-311") ,
-                new Student(21, "Eduardo", "C-312") ,
-                new Student(21, "Jose Carlos","C-312"),
-                new Student(17, "Claudia", "C-111"),
-                new Student(17, "Fulana", "C-111")};
+            var students = new List<MyStudent>() {
+                new MyStudent(20, "Andy", "C-312") ,
+                new MyStudent(21, "Rafa", "C-312") ,
+                new MyStudent(21, "Pedro", "C-311") ,
+                new MyStudent(20, "Diana", "C-312") ,
+                new MyStudent(20, "Daniela", "C-311") ,
+                new MyStudent(21, "Fernando", "C-311") ,
+                new MyStudent(21, "Eduardo", "C-312") ,
+                new MyStudent(21, "Jose Carlos","C-312"),
+                new MyStudent(17, "Claudia", "C-111"),
+                new MyStudent(17, "Fulana", "C-111")};
             
             foreach (var group in students.MyGroupBy((x) => x.Group))
             {
@@ -93,5 +80,23 @@ namespace CSharpLanguageDemo
 
             Console.WriteLine("\n === ******** === \n");
         }
+
+        static void Example5()
+        {
+            var people = new List<Person>
+            {
+                new Student  ("Andy"),
+                new Assistant("Rafa"),
+                new Student  ("Diana"),
+                new Teacher  ("KM"),
+            };
+
+            foreach (var person in people)
+                Console.WriteLine(person.Name);
+
+            PrintByConsole(x => x(new Student("Pedro")));
+        }
+
+        static void PrintByConsole(Action<Action<Person>> person) => person(x => Console.WriteLine(x.Name));
     }
 }

@@ -40,9 +40,9 @@ namespace CSharpLanguageDemo
         }
     }
 
-    public class Student
+    public class MyStudent
     {
-        public Student(int age, string name, string group)
+        public MyStudent(int age, string name, string group)
         {
             Age = age;
             Name = name;

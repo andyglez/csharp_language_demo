@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CSharpLanguageDemo
 {
@@ -13,6 +14,8 @@ namespace CSharpLanguageDemo
             ClosureExampleClass.BadVariableCapture();
             Example1();
             Example2();
+            Example3();
+            Helper.Four(Helper.Infinity());
         }
 
         static void Example1()
@@ -48,6 +51,18 @@ namespace CSharpLanguageDemo
                 }
                 Console.WriteLine(aux);
             }
+            Console.WriteLine("\n === ******** === \n");
+        }
+
+        static void Example3()
+        {
+            Console.WriteLine("\n === Primes Infinite Iterator === \n");
+
+            foreach (var item in Helper.GetPrimes().Where((prime) => prime.ToString().StartsWith("23")).Take(10))
+            {
+                Console.WriteLine(item);
+            }
+
             Console.WriteLine("\n === ******** === \n");
         }
     }

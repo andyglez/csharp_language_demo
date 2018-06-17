@@ -103,5 +103,6 @@ namespace CSharpLanguageDemo
             foreach (var student in people.Where(x => (x is Student)).Cast<Student>())
                 Console.WriteLine(student.Name);
         }
+        delegate R MyFunc<in T, out R>(T p);
     }
 }

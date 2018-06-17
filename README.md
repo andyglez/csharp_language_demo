@@ -165,3 +165,7 @@ Covariance is all about types of values being returned that is, the type paramet
 Contravariance is the opposite way around, is used to specify the type parameter that will only be used in an input context, allowing it to behave and be treated as a subclass type but never allows to go up in a class hierarchy.
 
 > Contravariance specifies input-only type parameters and its polymorphism is permitted only down in a class hierarchy.
+
+~~~csharp
+delegate R MyFunc<in T, out R>(T p);
+~~~

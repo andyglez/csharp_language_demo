@@ -18,6 +18,7 @@ namespace CSharpLanguageDemo
             Example3();
             Example4();
             Example5();
+            Example6();
         }
 
         static void Example1()
@@ -83,6 +84,8 @@ namespace CSharpLanguageDemo
 
         static void Example5()
         {
+            Console.WriteLine("\n === Variance Example === \n");
+            
             var people = new List<Person>
             {
                 new Student  ("Andy"),
@@ -95,6 +98,21 @@ namespace CSharpLanguageDemo
                 Console.WriteLine(person.Name);
 
             PrintByConsole(x => x(new Student("Pedro")));
+
+            Console.WriteLine("\n === ******** === \n");
+        }
+
+        static void Example6()
+        {
+            Console.WriteLine("\n === Operator Overloading Example === \n");
+
+            Complex a = 5.2;
+            Complex b = 2.3;
+            Console.WriteLine(a ^ b);
+            double unbox = (double)a;
+            Console.WriteLine(unbox);
+
+            Console.WriteLine("\n === ******** === \n");
         }
 
         static void PrintByConsole(Action<Action<Person>> person) => person(x => Console.WriteLine(x.Name));

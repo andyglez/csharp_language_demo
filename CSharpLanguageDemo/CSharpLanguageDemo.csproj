@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClosureExampleClass.cs" />
+    <Compile Include="Complex.cs" />
     <Compile Include="Hierarchy\Assistant.cs" />
     <Compile Include="Hierarchy\ITeacher.cs" />
     <Compile Include="Hierarchy\IWorker.cs" />

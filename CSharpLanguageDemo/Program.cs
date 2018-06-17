@@ -98,5 +98,10 @@ namespace CSharpLanguageDemo
         }
 
         static void PrintByConsole(Action<Action<Person>> person) => person(x => Console.WriteLine(x.Name));
+        static void PrintStudentsOnly(IEnumerable<object> people)
+        {
+            foreach (var student in people.Where(x => (x is Student)).Cast<Student>())
+                Console.WriteLine(student.Name);
+        }
     }
 }

@@ -145,3 +145,23 @@ bool bitwise = true |  Four(Infinity());
 
 First, it's clear that the call to Four with Infinity results in a runtime error, and then logical operation recognizes that the left operand is true, so there's no need to evaluate the second. That is because logical operators uses lazy evaluation, instead of bitwise operator who needs to check both operands to compute the result and thus it is impatient.
 
+## Variance
+
+Due to inheritance and polymorphism there exists the term variance which refers to the types and context of the objects and about being able to use an object as another in a type-safe way. At first, there was some collections that supported covariance such as arrays.
+
+~~~csharp
+string[] str = new string[10];
+object[] obj = str;
+obj[0] = new Button();
+~~~
+
+This is permissible since object is a parent class for string, and button is a subclass for object, but results eventually will show as runtime errors.
+Variance is applied only within interfaces and delegates. There are two types of variance: covariance and contravariance 
+
+Covariance is all about types of values being returned that is, the type parameter will only be used in an output context allowing it to behave and be treated as a parent type but never allowes to assign down in a class hierarchy.
+
+> Covariance specifies output-only type parameters and its polymorphism is permitted only up in a class hierarchy.
+
+Contravariance is the opposite way around, is used to specify the type parameter that will only be used in an input context, allowing it to behave and be treated as a subclass type but never allows to go up in a class hierarchy.
+
+> Contravariance specifies input-only type parameters and its polymorphism is permitted only down in a class hierarchy.

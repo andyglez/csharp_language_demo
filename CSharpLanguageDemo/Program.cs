@@ -120,23 +120,21 @@ namespace CSharpLanguageDemo
         {
             Console.WriteLine("\n === Combinations Example === \n");
 
-            var list = new List<int>{ 1, 2, 3 };
+            var list = new List<int>{ 1, 2, 3, 4};
             int count = 0;
-            foreach (var comb in list.Combinations())
+            int k = 3;
+            foreach (var comb in list.Combinations(k))
             {
-                Console.Write("[");
-                int i = 0;
-                foreach (var item in comb)
-                {
-                    if(i++ == list.Count - 1)
-                        Console.Write($"{item}]\n");
-                    else
-                        Console.Write($"{item}, ");
-                }
+                comb.Print(k, x => Console.Write(x));
                 count++;
             }
             Console.WriteLine("\n" + count);
             Console.WriteLine("\n === ******** === \n");
+        }
+
+        static void PrintEnumerables<T>(IEnumerable<T> source, int size)
+        {
+
         }
         static void PrintByConsole(Action<Action<Person>> person) => person(x => Console.WriteLine(x.Name));
         static void PrintStudentsOnly(IEnumerable<object> people)

@@ -18,14 +18,38 @@ namespace CSharpLanguageDemo
             }   
         }
 
-        public static IEnumerable<IEnumerable<T>> Combinations<T>(this IEnumerable<T> source)
+        public static IEnumerable<IEnumerable<T>> Permutations<T>(this IEnumerable<T> source)
         {
             foreach (var item in source)
             {
                 if (source.Count() == 1)
                     yield return new List<T> { item };
-                foreach (var comb in Combinations(source.Where(x => !x.Equals(item))))
-                    yield return new List<T>{ item }.Concat(comb);
+                foreach (var perm in Permutations(source.Where(x => !x.Equals(item))))
+                    yield return new List<T>{ item }.Concat(perm);
+            }
+        }
+
+        public static IEnumerable<IEnumerable<T>> Combinations<T>(this IEnumerable<T> source, int number)
+        {
+            foreach (var item in source)
+            {
+                if (number == 1)
+                    yield return new List<T> { item };
+                foreach (var comb in Combinations(source.Where(x => !x.Equals(item)), number - 1))
+                    yield return new List<T> { item }.Concat(comb);
+            }
+        }
+
+        public static void Print<T>(this IEnumerable<T> source, int size, Action<string> write)
+        {
+            write("[");
+            int i = 0;
+            foreach (var item in source)
+            {
+                if (++i == size)
+                    write($"{item}]\n");
+                else
+                    write($"{item}, ");
             }
         }
     }

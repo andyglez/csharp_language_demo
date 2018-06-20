@@ -19,6 +19,7 @@ namespace CSharpLanguageDemo
             Example4();
             Example5();
             Example6();
+            Example7();
         }
 
         static void Example1()
@@ -115,6 +116,28 @@ namespace CSharpLanguageDemo
             Console.WriteLine("\n === ******** === \n");
         }
 
+        static void Example7()
+        {
+            Console.WriteLine("\n === Combinations Example === \n");
+
+            var list = new List<int>{ 1, 2, 3 };
+            int count = 0;
+            foreach (var comb in list.Combinations())
+            {
+                Console.Write("[");
+                int i = 0;
+                foreach (var item in comb)
+                {
+                    if(i++ == list.Count - 1)
+                        Console.Write($"{item}]\n");
+                    else
+                        Console.Write($"{item}, ");
+                }
+                count++;
+            }
+            Console.WriteLine("\n" + count);
+            Console.WriteLine("\n === ******** === \n");
+        }
         static void PrintByConsole(Action<Action<Person>> person) => person(x => Console.WriteLine(x.Name));
         static void PrintStudentsOnly(IEnumerable<object> people)
         {

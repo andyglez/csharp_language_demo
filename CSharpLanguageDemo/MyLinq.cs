@@ -17,6 +17,17 @@ namespace CSharpLanguageDemo
                 aux = aux.Where((x) => !(keySelector(x).Equals(key)));
             }   
         }
+
+        public static IEnumerable<IEnumerable<T>> Combinations<T>(this IEnumerable<T> source)
+        {
+            foreach (var item in source)
+            {
+                if (source.Count() == 1)
+                    yield return new List<T> { item };
+                foreach (var comb in Combinations(source.Where(x => !x.Equals(item))))
+                    yield return new List<T>{ item }.Concat(comb);
+            }
+        }
     }
 
     public class Group<TKey, TSource> : IGrouping<TKey, TSource>
